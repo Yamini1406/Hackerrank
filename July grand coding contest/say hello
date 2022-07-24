@@ -1,0 +1,58 @@
+Sudha newly joined to Whatsapp family group and she immediately decided to say hello to everybody. Sudha typed the word s. 
+It is considered that Sudha managed to say hello if several letters can be deleted from the typed word so that it resulted in the word "hello".
+For example, if Sudha types the word "ahhellllloou", it will be considered that she said hello, and if she types "hlelo", it will be considered that
+Sudha got misunderstood and she didn't manage to say hello. Determine whether she managed to say hello by the given words.
+
+Input Format
+
+The first and only line contains the word s, which Sudha typed. This word consists of small Latin letters.
+
+Constraints
+
+Length is no less that 1 and no more than 100 letters.
+
+Output Format
+
+If Sudha managed to say hello, print "YES", otherwise print "NO".
+
+Sample Input 0
+
+hlelo
+Sample Output 0
+
+NO
+Explanation 0
+
+This string cannot be resulted to form the word "Hello"
+
+Sample Input 1
+
+hehwelloho
+Sample Output 1
+
+YES
+
+ SOLUTION
+ --------
+
+#include <cmath>
+#include <cstdio>
+#include<string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string str;
+    vector<int> freq(26,0);
+    getline(cin,str);
+    int k=0;
+    char check[]={'h','e','l','l','o'};
+    for(int i=0;str[i]!='\0';i++){
+        if(str[i]==check[k] && k<5) k++;
+    }
+    if(k==5 && str.length()>5) cout<<"YES";
+    else cout<<"NO";
+    return 0;
+}
