@@ -1,0 +1,88 @@
+Provided array of integers. Your task is to find contigous subarray which has largest sum and return it.
+
+the subarray should have minimum of size 1.
+
+Input Format
+
+The first line contains the size of array N. The next N integers seperated by space are the elements of the array.
+
+Constraints
+
+N>=1
+-1000<=arr[i]<=1000
+Minimum size of array is 1
+
+Output Format
+
+Return the the maximum sum.
+
+Sample Input 0
+
+2
+-1 -2
+Sample Output 0
+
+-1
+Explanation 0
+
+Available subarray and their sums are are
+
+[-1] --> -1
+
+[-2] --> -2
+
+[-1,-2] --> -3
+
+Hence the Maximum sum is -1
+
+Sample Input 1
+
+5
+1 2 3 4 5
+Sample Output 1
+
+15
+Explanation 1
+
+Since [1,2,3,4,5] is a subarray and has the maximum sum, the answer is 15
+
+Sample Input 2
+
+6
+8 -1 -6 -5 2 3
+Sample Output 2
+
+8
+
+
+SOLUTION
+--------
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int max(int a,int b){
+    return a>b?a:b;
+}
+
+int main() {
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++) cin>>arr[i];
+    //int maxi=0;
+    //int maximum=0;
+    //fails for -2 -1:gives 0
+    int maximum=arr[0];
+    int maxi=arr[0];
+    //for(int i=0;i<n;i++){
+    for(int i=1;i<n;i++){
+        maximum=max(maximum+arr[i],arr[i]);
+        if(maximum>maxi) maxi=maximum;
+    }
+    cout<<maxi;
+    return 0;
+}
